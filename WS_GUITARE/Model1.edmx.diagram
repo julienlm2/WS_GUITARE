@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cbee76f0b64048b79a04c507fd0c2f00" Name="Diagram1">
+        <EntityTypeShape EntityType="NS_BASE.C_Bois" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="NS_BASE.C_Client" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NS_BASE.C_EtatCommande" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NS_BASE.C_Guitare" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NS_BASE.C_Micro" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NS_BASE.C_Vibrato" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="NS_BASE.FK__Guitare__idBois___44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="NS_BASE.FK__Guitare__idBois___46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="NS_BASE.FK__Guitare__idBois__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="NS_BASE.FK__Guitare__idClien__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="NS_BASE.FK__Guitare__idEtatC__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="NS_BASE.FK__Guitare__idMicro__48CFD27E" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="NS_BASE.FK__Guitare__idVibra__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="NS_BASE.FK_Guitare_Micro" />
+        <AssociationConnector Association="NS_BASE.FK_Guitare_Micro1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

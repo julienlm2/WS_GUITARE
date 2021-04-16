@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GuitareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bois">
+          <Key>
+            <PropertyRef Name="idBois" />
+          </Key>
+          <Property Name="idBois" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomBois" Type="varchar" MaxLength="50" />
+          <Property Name="OrigineBois" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="idClient" />
+          </Key>
+          <Property Name="idClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="50" />
+          <Property Name="Adresse" Type="varchar" MaxLength="50" />
+          <Property Name="telephone" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EtatCommande">
+          <Key>
+            <PropertyRef Name="idEtatCommande" />
+          </Key>
+          <Property Name="idEtatCommande" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelleetatcommande" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Guitare">
+          <Key>
+            <PropertyRef Name="idGuitare" />
+          </Key>
+          <Property Name="idGuitare" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dateCommande" Type="datetime" />
+          <Property Name="idEtatCommande" Type="int" Nullable="false" />
+          <Property Name="idMicro" Type="int" />
+          <Property Name="idMicro_1" Type="int" />
+          <Property Name="idBois" Type="int" Nullable="false" />
+          <Property Name="idBois_1" Type="int" Nullable="false" />
+          <Property Name="idClient" Type="int" />
+          <Property Name="idBois_2" Type="int" Nullable="false" />
+          <Property Name="idVibrato" Type="int" Nullable="false" />
+          <Property Name="idMicro_2" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Micro">
+          <Key>
+            <PropertyRef Name="idMicro" />
+          </Key>
+          <Property Name="idMicro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomMicro" Type="varchar" MaxLength="50" />
+          <Property Name="marque" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Vibrato">
+          <Key>
+            <PropertyRef Name="idVibrato" />
+          </Key>
+          <Property Name="idVibrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomVibrato" Type="varchar" MaxLength="50" />
+          <Property Name="marqueVibrato" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Guitare__idBois___44FF419A">
+          <End Role="Bois" Type="Self.Bois" Multiplicity="1" />
+          <End Role="Guitare" Type="Self.Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bois">
+              <PropertyRef Name="idBois" />
+            </Principal>
+            <Dependent Role="Guitare">
+              <PropertyRef Name="idBois_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Guitare__idBois___46E78A0C">
+          <End Role="Bois" Type="Self.Bois" Multiplicity="1" />
+          <End Role="Guitare" Type="Self.Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bois">
+              <PropertyRef Name="idBois" />
+            </Principal>
+            <Dependent Role="Guitare">
+              <PropertyRef Name="idBois_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Guitare__idBois__440B1D61">
+          <End Role="Bois" Type="Self.Bois" Multiplicity="1" />
+          <End Role="Guitare" Type="Self.Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bois">
+              <PropertyRef Name="idBois" />
+            </Principal>
+            <Dependent Role="Guitare">
+              <PropertyRef Name="idBois" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Guitare__idClien__45F365D3">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Guitare" Type="Self.Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="idClient" />
+            </Principal>
+            <Dependent Role="Guitare">
+              <PropertyRef Name="idClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Guitare__idEtatC__412EB0B6">
+          <End Role="EtatCommande" Type="Self.EtatCommande" Multiplicity="1" />
+          <End Role="Guitare" Type="Self.Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EtatCommande">
+              <PropertyRef Name="idEtatCommande" />
+            </Principal>
+            <Dependent Role="Guitare">
+              <PropertyRef Name="idEtatCommande" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Guitare__idMicro__48CFD27E">
+          <End Role="Micro" Type="Self.Micro" Multiplicity="1" />
+          <End Role="Guitare" Type="Self.Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Micro">
+              <PropertyRef Name="idMicro" />
+            </Principal>
+            <Dependent Role="Guitare">
+              <PropertyRef Name="idMicro_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Guitare__idVibra__47DBAE45">
+          <End Role="Vibrato" Type="Self.Vibrato" Multiplicity="1" />
+          <End Role="Guitare" Type="Self.Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vibrato">
+              <PropertyRef Name="idVibrato" />
+            </Principal>
+            <Dependent Role="Guitare">
+              <PropertyRef Name="idVibrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Guitare_Micro">
+          <End Role="Micro" Type="Self.Micro" Multiplicity="0..1" />
+          <End Role="Guitare" Type="Self.Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Micro">
+              <PropertyRef Name="idMicro" />
+            </Principal>
+            <Dependent Role="Guitare">
+              <PropertyRef Name="idMicro_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Guitare_Micro1">
+          <End Role="Micro" Type="Self.Micro" Multiplicity="0..1" />
+          <End Role="Guitare" Type="Self.Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Micro">
+              <PropertyRef Name="idMicro" />
+            </Principal>
+            <Dependent Role="Guitare">
+              <PropertyRef Name="idMicro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Add_Client" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nom" Type="varchar" Mode="In" />
+          <Parameter Name="Adresse" Type="varchar" Mode="In" />
+          <Parameter Name="Telephone" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Add_Guitare" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Micro_neck" Type="int" Mode="In" />
+          <Parameter Name="Micro_Bridge" Type="int" Mode="In" />
+          <Parameter Name="MicroCentrale" Type="int" Mode="In" />
+          <Parameter Name="Bois_Manche" Type="int" Mode="In" />
+          <Parameter Name="Bois_Touche" Type="int" Mode="In" />
+          <Parameter Name="Bois_Corps" Type="int" Mode="In" />
+          <Parameter Name="Id_Client" Type="int" Mode="In" />
+          <Parameter Name="Vibrato" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Bois" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_bois_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_bois" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Etat_Commande" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_Guitare" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GET_GUITARE_BY_ID_CLIENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idClient" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_id_Bois_by_Name" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NomBois" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Get_id_client_by_name" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nom" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Get_id_micro_by_Name" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NomMicro" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Get_id_Vibrato_by_Name" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Vibrato" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Get_Micro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_micro_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_micro" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Vibrato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="GuitareModelStoreContainer">
+          <EntitySet Name="Bois" EntityType="Self.Bois" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EtatCommande" EntityType="Self.EtatCommande" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guitare" EntityType="Self.Guitare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Micro" EntityType="Self.Micro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vibrato" EntityType="Self.Vibrato" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Guitare__idBois___44FF419A" Association="Self.FK__Guitare__idBois___44FF419A">
+            <End Role="Bois" EntitySet="Bois" />
+            <End Role="Guitare" EntitySet="Guitare" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Guitare__idBois___46E78A0C" Association="Self.FK__Guitare__idBois___46E78A0C">
+            <End Role="Bois" EntitySet="Bois" />
+            <End Role="Guitare" EntitySet="Guitare" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Guitare__idBois__440B1D61" Association="Self.FK__Guitare__idBois__440B1D61">
+            <End Role="Bois" EntitySet="Bois" />
+            <End Role="Guitare" EntitySet="Guitare" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Guitare__idClien__45F365D3" Association="Self.FK__Guitare__idClien__45F365D3">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Guitare" EntitySet="Guitare" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Guitare__idEtatC__412EB0B6" Association="Self.FK__Guitare__idEtatC__412EB0B6">
+            <End Role="EtatCommande" EntitySet="EtatCommande" />
+            <End Role="Guitare" EntitySet="Guitare" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Guitare__idMicro__48CFD27E" Association="Self.FK__Guitare__idMicro__48CFD27E">
+            <End Role="Micro" EntitySet="Micro" />
+            <End Role="Guitare" EntitySet="Guitare" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Guitare__idVibra__47DBAE45" Association="Self.FK__Guitare__idVibra__47DBAE45">
+            <End Role="Vibrato" EntitySet="Vibrato" />
+            <End Role="Guitare" EntitySet="Guitare" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Guitare_Micro" Association="Self.FK_Guitare_Micro">
+            <End Role="Micro" EntitySet="Micro" />
+            <End Role="Guitare" EntitySet="Guitare" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Guitare_Micro1" Association="Self.FK_Guitare_Micro1">
+            <End Role="Micro" EntitySet="Micro" />
+            <End Role="Guitare" EntitySet="Guitare" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NS_BASE" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C_Bois">
+          <Key>
+            <PropertyRef Name="idBois" />
+          </Key>
+          <Property Name="idBois" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomBois" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrigineBois" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="C_Client">
+          <Key>
+            <PropertyRef Name="idClient" />
+          </Key>
+          <Property Name="idClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="C_EtatCommande">
+          <Key>
+            <PropertyRef Name="idEtatCommande" />
+          </Key>
+          <Property Name="idEtatCommande" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelleetatcommande" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="C_Guitare">
+          <Key>
+            <PropertyRef Name="idGuitare" />
+          </Key>
+          <Property Name="idGuitare" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dateCommande" Type="DateTime" Precision="3" />
+          <Property Name="idEtatCommande" Type="Int32" Nullable="false" />
+          <Property Name="idMicro" Type="Int32" />
+          <Property Name="idMicro_1" Type="Int32" />
+          <Property Name="idBois" Type="Int32" Nullable="false" />
+          <Property Name="idBois_1" Type="Int32" Nullable="false" />
+          <Property Name="idClient" Type="Int32" />
+          <Property Name="idBois_2" Type="Int32" Nullable="false" />
+          <Property Name="idVibrato" Type="Int32" Nullable="false" />
+          <Property Name="idMicro_2" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Micro">
+          <Key>
+            <PropertyRef Name="idMicro" />
+          </Key>
+          <Property Name="idMicro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomMicro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="marque" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="C_Vibrato">
+          <Key>
+            <PropertyRef Name="idVibrato" />
+          </Key>
+          <Property Name="idVibrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomVibrato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="marqueVibrato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Guitare__idBois___44FF419A">
+          <End Role="Bois" Type="NS_BASE.C_Bois" Multiplicity="1" />
+          <End Role="Guitare" Type="NS_BASE.C_Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bois">
+              <PropertyRef Name="idBois" />
+            </Principal>
+            <Dependent Role="Guitare">
+              <PropertyRef Name="idBois_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Guitare__idBois___46E78A0C">
+          <End Role="Bois" Type="NS_BASE.C_Bois" Multiplicity="1" />
+          <End Role="Guitare" Type="NS_BASE.C_Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bois">
+              <PropertyRef Name="idBois" />
+            </Principal>
+            <Dependent Role="Guitare">
+              <PropertyRef Name="idBois_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Guitare__idBois__440B1D61">
+          <End Role="Bois" Type="NS_BASE.C_Bois" Multiplicity="1" />
+          <End Role="Guitare" Type="NS_BASE.C_Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bois">
+              <PropertyRef Name="idBois" />
+            </Principal>
+            <Dependent Role="Guitare">
+              <PropertyRef Name="idBois" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Guitare__idClien__45F365D3">
+          <End Role="Client" Type="NS_BASE.C_Client" Multiplicity="0..1" />
+          <End Role="Guitare" Type="NS_BASE.C_Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="idClient" />
+            </Principal>
+            <Dependent Role="Guitare">
+              <PropertyRef Name="idClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Guitare__idEtatC__412EB0B6">
+          <End Role="EtatCommande" Type="NS_BASE.C_EtatCommande" Multiplicity="1" />
+          <End Role="Guitare" Type="NS_BASE.C_Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EtatCommande">
+              <PropertyRef Name="idEtatCommande" />
+            </Principal>
+            <Dependent Role="Guitare">
+              <PropertyRef Name="idEtatCommande" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Guitare__idMicro__48CFD27E">
+          <End Role="Micro" Type="NS_BASE.C_Micro" Multiplicity="1" />
+          <End Role="Guitare" Type="NS_BASE.C_Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Micro">
+              <PropertyRef Name="idMicro" />
+            </Principal>
+            <Dependent Role="Guitare">
+              <PropertyRef Name="idMicro_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Guitare__idVibra__47DBAE45">
+          <End Role="Vibrato" Type="NS_BASE.C_Vibrato" Multiplicity="1" />
+          <End Role="Guitare" Type="NS_BASE.C_Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vibrato">
+              <PropertyRef Name="idVibrato" />
+            </Principal>
+            <Dependent Role="Guitare">
+              <PropertyRef Name="idVibrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="C_BASE" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Les_Bois" EntityType="NS_BASE.C_Bois" />
+          <EntitySet Name="Les_Clients" EntityType="NS_BASE.C_Client" />
+          <EntitySet Name="Les_EtatCommande" EntityType="NS_BASE.C_EtatCommande" />
+          <EntitySet Name="Les_Guitares" EntityType="NS_BASE.C_Guitare" />
+          <EntitySet Name="Les_Micros" EntityType="NS_BASE.C_Micro" />
+          <EntitySet Name="Les_vibrato" EntityType="NS_BASE.C_Vibrato" />
+          <AssociationSet Name="FK__Guitare__idBois___44FF419A" Association="Self.FK__Guitare__idBois___44FF419A">
+            <End Role="Bois" EntitySet="Les_Bois" />
+            <End Role="Guitare" EntitySet="Les_Guitares" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Guitare__idBois___46E78A0C" Association="Self.FK__Guitare__idBois___46E78A0C">
+            <End Role="Bois" EntitySet="Les_Bois" />
+            <End Role="Guitare" EntitySet="Les_Guitares" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Guitare__idBois__440B1D61" Association="Self.FK__Guitare__idBois__440B1D61">
+            <End Role="Bois" EntitySet="Les_Bois" />
+            <End Role="Guitare" EntitySet="Les_Guitares" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Guitare__idClien__45F365D3" Association="Self.FK__Guitare__idClien__45F365D3">
+            <End Role="Client" EntitySet="Les_Clients" />
+            <End Role="Guitare" EntitySet="Les_Guitares" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Guitare__idEtatC__412EB0B6" Association="Self.FK__Guitare__idEtatC__412EB0B6">
+            <End Role="EtatCommande" EntitySet="Les_EtatCommande" />
+            <End Role="Guitare" EntitySet="Les_Guitares" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Guitare__idMicro__48CFD27E" Association="Self.FK__Guitare__idMicro__48CFD27E">
+            <End Role="Micro" EntitySet="Les_Micros" />
+            <End Role="Guitare" EntitySet="Les_Guitares" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Guitare__idVibra__47DBAE45" Association="Self.FK__Guitare__idVibra__47DBAE45">
+            <End Role="Vibrato" EntitySet="Les_vibrato" />
+            <End Role="Guitare" EntitySet="Les_Guitares" />
+          </AssociationSet>
+          <FunctionImport Name="Add_Guitare">
+            <Parameter Name="Micro_neck" Mode="In" Type="Int32" />
+            <Parameter Name="Micro_Bridge" Mode="In" Type="Int32" />
+            <Parameter Name="MicroCentrale" Mode="In" Type="Int32" />
+            <Parameter Name="Bois_Manche" Mode="In" Type="Int32" />
+            <Parameter Name="Bois_Touche" Mode="In" Type="Int32" />
+            <Parameter Name="Bois_Corps" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Client" Mode="In" Type="Int32" />
+            <Parameter Name="Vibrato" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_bois_by_id" ReturnType="Collection(NS_BASE.get_bois_by_id_Result)">
+          <Parameter Name="id_bois" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Guitare" ReturnType="Collection(NS_BASE.Get_Guitare_Result)" />
+          <FunctionImport Name="get_micro_by_id" ReturnType="Collection(NS_BASE.get_micro_by_id_Result)">
+          <Parameter Name="id_micro" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <AssociationSet Name="FK_Guitare_Micro" Association="NS_BASE.FK_Guitare_Micro">
+            <End Role="C_Micro" EntitySet="Les_Micros" />
+            <End Role="C_Guitare" EntitySet="Les_Guitares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Guitare_Micro1" Association="NS_BASE.FK_Guitare_Micro1">
+            <End Role="C_Micro" EntitySet="Les_Micros" />
+            <End Role="C_Guitare" EntitySet="Les_Guitares" />
+          </AssociationSet>
+          <FunctionImport Name="Add_Client">
+            <Parameter Name="Nom" Mode="In" Type="String" />
+            <Parameter Name="Adresse" Mode="In" Type="String" />
+            <Parameter Name="Telephone" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Etat_Commande" EntitySet="Les_EtatCommande" ReturnType="Collection(NS_BASE.C_EtatCommande)" />
+          <FunctionImport Name="Get_id_client_by_name" ReturnType="Collection(Int32)">
+          <Parameter Name="Nom" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Micro" ReturnType="Collection(NS_BASE.Get_Micro_Result)" />
+          <FunctionImport Name="Get_Vibrato" ReturnType="Collection(NS_BASE.Get_Vibrato_Result)" />
+          <FunctionImport Name="Get_id_micro_by_Name" ReturnType="Collection(Int32)">
+          <Parameter Name="NomMicro" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Bois" ReturnType="Collection(NS_BASE.Get_Bois_Result)" />
+          <FunctionImport Name="Get_id_Bois_by_Name" ReturnType="Collection(Int32)">
+          <Parameter Name="NomBois" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_id_Vibrato_by_Name" ReturnType="Collection(Int32)">
+          <Parameter Name="Vibrato" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GET_GUITARE_BY_ID_CLIENT" ReturnType="Collection(NS_BASE.GET_GUITARE_BY_ID_CLIENT_Result)">
+            <Parameter Name="idClient" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="get_bois_by_id_Result">
+          <Property Type="Int32" Name="idBois" Nullable="false" />
+          <Property Type="String" Name="NomBois" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OrigineBois" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Guitare_Result">
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="telephone" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="idBois" Nullable="false" />
+          <Property Type="Int32" Name="idBois_1" Nullable="false" />
+          <Property Type="Int32" Name="idBois_2" Nullable="false" />
+          <Property Type="Int32" Name="idMicro" Nullable="true" />
+          <Property Type="Int32" Name="idMicro_1" Nullable="true" />
+          <Property Type="Int32" Name="idMicro_2" Nullable="false" />
+          <Property Type="String" Name="nomVibrato" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Etat_Commande" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_micro_by_id_Result">
+          <Property Type="Int32" Name="idMicro" Nullable="false" />
+          <Property Type="String" Name="NomMicro" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="marque" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <Association Name="FK_Guitare_Micro">
+          <End Type="NS_BASE.C_Micro" Role="C_Micro" Multiplicity="0..1" />
+          <End Type="NS_BASE.C_Guitare" Role="C_Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Micro">
+              <PropertyRef Name="idMicro" />
+            </Principal>
+            <Dependent Role="C_Guitare">
+              <PropertyRef Name="idMicro_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Guitare_Micro1">
+          <End Type="NS_BASE.C_Micro" Role="C_Micro" Multiplicity="0..1" />
+          <End Type="NS_BASE.C_Guitare" Role="C_Guitare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Micro">
+              <PropertyRef Name="idMicro" />
+            </Principal>
+            <Dependent Role="C_Guitare">
+              <PropertyRef Name="idMicro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Get_id_client_by_name_Result">
+          <Property Type="Int32" Name="idClient" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Get_Micro_Result">
+          <Property Type="String" Name="NomMicro" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_id_micro_by_Name1_Result">
+          <Property Type="Int32" Name="idMicro" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Get_id_micro_by_Name_Result">
+          <Property Type="Int32" Name="idMicro" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Get_Bois_Result">
+          <Property Type="String" Name="NomBois" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Vibrato_Result">
+          <Property Type="String" Name="nomVibrato" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_id_Vibrato_by_Name_Result">
+          <Property Type="Int32" Name="idVibrato" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Get_id_Bois_by_Name_Result">
+          <Property Type="Int32" Name="idBois" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GET_GUITARE_BY_ID_CLIENT_Result">
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="telephone" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="idBois" Nullable="false" />
+          <Property Type="Int32" Name="idBois_1" Nullable="false" />
+          <Property Type="Int32" Name="idBois_2" Nullable="false" />
+          <Property Type="Int32" Name="idMicro" Nullable="true" />
+          <Property Type="Int32" Name="idMicro_1" Nullable="true" />
+          <Property Type="Int32" Name="idMicro_2" Nullable="false" />
+          <Property Type="String" Name="nomVibrato" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Etat_Commande" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GuitareModelStoreContainer" CdmEntityContainer="C_BASE">
+          <EntitySetMapping Name="Les_Bois">
+            <EntityTypeMapping TypeName="NS_BASE.C_Bois">
+              <MappingFragment StoreEntitySet="Bois">
+                <ScalarProperty Name="idBois" ColumnName="idBois" />
+                <ScalarProperty Name="NomBois" ColumnName="NomBois" />
+                <ScalarProperty Name="OrigineBois" ColumnName="OrigineBois" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Les_Clients">
+            <EntityTypeMapping TypeName="NS_BASE.C_Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="idClient" ColumnName="idClient" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Les_EtatCommande">
+            <EntityTypeMapping TypeName="NS_BASE.C_EtatCommande">
+              <MappingFragment StoreEntitySet="EtatCommande">
+                <ScalarProperty Name="idEtatCommande" ColumnName="idEtatCommande" />
+                <ScalarProperty Name="libelleetatcommande" ColumnName="libelleetatcommande" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Les_Guitares">
+            <EntityTypeMapping TypeName="NS_BASE.C_Guitare">
+              <MappingFragment StoreEntitySet="Guitare">
+                <ScalarProperty Name="idGuitare" ColumnName="idGuitare" />
+                <ScalarProperty Name="dateCommande" ColumnName="dateCommande" />
+                <ScalarProperty Name="idEtatCommande" ColumnName="idEtatCommande" />
+                <ScalarProperty Name="idMicro" ColumnName="idMicro" />
+                <ScalarProperty Name="idMicro_1" ColumnName="idMicro_1" />
+                <ScalarProperty Name="idBois" ColumnName="idBois" />
+                <ScalarProperty Name="idBois_1" ColumnName="idBois_1" />
+                <ScalarProperty Name="idClient" ColumnName="idClient" />
+                <ScalarProperty Name="idBois_2" ColumnName="idBois_2" />
+                <ScalarProperty Name="idVibrato" ColumnName="idVibrato" />
+                <ScalarProperty Name="idMicro_2" ColumnName="idMicro_2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Les_Micros">
+            <EntityTypeMapping TypeName="NS_BASE.C_Micro">
+              <MappingFragment StoreEntitySet="Micro">
+                <ScalarProperty Name="idMicro" ColumnName="idMicro" />
+                <ScalarProperty Name="NomMicro" ColumnName="NomMicro" />
+                <ScalarProperty Name="marque" ColumnName="marque" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Les_vibrato">
+            <EntityTypeMapping TypeName="NS_BASE.C_Vibrato">
+              <MappingFragment StoreEntitySet="Vibrato">
+                <ScalarProperty Name="idVibrato" ColumnName="idVibrato" />
+                <ScalarProperty Name="nomVibrato" ColumnName="nomVibrato" />
+                <ScalarProperty Name="marqueVibrato" ColumnName="marqueVibrato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Add_Guitare" FunctionName="GuitareModel.Store.Add_Guitare" />
+          <FunctionImportMapping FunctionImportName="get_bois_by_id" FunctionName="GuitareModel.Store.get_bois_by_id">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NS_BASE.get_bois_by_id_Result">
+                <ScalarProperty Name="idBois" ColumnName="idBois" />
+                <ScalarProperty Name="NomBois" ColumnName="NomBois" />
+                <ScalarProperty Name="OrigineBois" ColumnName="OrigineBois" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Guitare" FunctionName="GuitareModel.Store.Get_Guitare">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NS_BASE.Get_Guitare_Result">
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="idBois" ColumnName="idBois" />
+                <ScalarProperty Name="idBois_1" ColumnName="idBois_1" />
+                <ScalarProperty Name="idBois_2" ColumnName="idBois_2" />
+                <ScalarProperty Name="idMicro" ColumnName="idMicro" />
+                <ScalarProperty Name="idMicro_1" ColumnName="idMicro_1" />
+                <ScalarProperty Name="idMicro_2" ColumnName="idMicro_2" />
+                <ScalarProperty Name="nomVibrato" ColumnName="nomVibrato" />
+                <ScalarProperty Name="Etat_Commande" ColumnName="Etat_Commande" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_micro_by_id" FunctionName="GuitareModel.Store.get_micro_by_id">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NS_BASE.get_micro_by_id_Result">
+                <ScalarProperty Name="idMicro" ColumnName="idMicro" />
+                <ScalarProperty Name="NomMicro" ColumnName="NomMicro" />
+                <ScalarProperty Name="marque" ColumnName="marque" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Add_Client" FunctionName="GuitareModel.Store.Add_Client" />
+          <FunctionImportMapping FunctionImportName="Get_Etat_Commande" FunctionName="GuitareModel.Store.Get_Etat_Commande" />
+          <FunctionImportMapping FunctionImportName="Get_id_client_by_name" FunctionName="GuitareModel.Store.Get_id_client_by_name" >
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Micro" FunctionName="GuitareModel.Store.Get_Micro" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NS_BASE.Get_Micro_Result">
+                <ScalarProperty Name="NomMicro" ColumnName="NomMicro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Vibrato" FunctionName="GuitareModel.Store.Get_Vibrato" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NS_BASE.Get_Vibrato_Result">
+                <ScalarProperty Name="nomVibrato" ColumnName="nomVibrato" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_id_micro_by_Name" FunctionName="GuitareModel.Store.Get_id_micro_by_Name" >
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Bois" FunctionName="GuitareModel.Store.Get_Bois">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NS_BASE.Get_Bois_Result">
+                <ScalarProperty Name="NomBois" ColumnName="NomBois" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_id_Bois_by_Name" FunctionName="GuitareModel.Store.Get_id_Bois_by_Name" >
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_id_Vibrato_by_Name" FunctionName="GuitareModel.Store.Get_id_Vibrato_by_Name" >
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GET_GUITARE_BY_ID_CLIENT" FunctionName="GuitareModel.Store.GET_GUITARE_BY_ID_CLIENT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NS_BASE.GET_GUITARE_BY_ID_CLIENT_Result">
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="idBois" ColumnName="idBois" />
+                <ScalarProperty Name="idBois_1" ColumnName="idBois_1" />
+                <ScalarProperty Name="idBois_2" ColumnName="idBois_2" />
+                <ScalarProperty Name="idMicro" ColumnName="idMicro" />
+                <ScalarProperty Name="idMicro_1" ColumnName="idMicro_1" />
+                <ScalarProperty Name="idMicro_2" ColumnName="idMicro_2" />
+                <ScalarProperty Name="nomVibrato" ColumnName="nomVibrato" />
+                <ScalarProperty Name="Etat_Commande" ColumnName="Etat_Commande" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

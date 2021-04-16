@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WS_GUITARE", "WS_GUITARE\WS_GUITARE.csproj", "{27009230-C5C8-4CDC-9B58-AF1BBBD21149}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27009230-C5C8-4CDC-9B58-AF1BBBD21149}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27009230-C5C8-4CDC-9B58-AF1BBBD21149}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27009230-C5C8-4CDC-9B58-AF1BBBD21149}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27009230-C5C8-4CDC-9B58-AF1BBBD21149}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3F82F1F-8B2B-4101-AE14-7219D944A94F}
+	EndGlobalSection
+EndGlobal
